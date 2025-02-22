@@ -1,34 +1,15 @@
-import apiClient from "@/services/api-client";
-import { useEffect, useState } from "react";
+import useGame from "@/hooks/useGame";
+import { Game } from "@/types";
 
-interface Game {
-    id: number;
-    name: string;
-}
 const GridGame = () => {
-  const [games, setGames] = useState<Game[]>();
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<Error | null>(null);
+  const { data: games, isLoading, error } = useGame<Game>();
 
-  useEffect(() => {
-    apiClient
-      .get<Game[]>("/users")
-      .then((res) => {
-        setGames(res.data);
-        setLoading(false);
-      })
-      .catch((err) => {
-        setError(err);
-        setLoading(false);
-      });
-  }, [])
-
-  if (loading) return <p>Loading...</p>;
+  if (isLoading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
 
   return (
     <div>
-      {games?.map((game) => (
+      {games?.map((game: Game) => (
         <li>{game.name}</li>
       ))}
     </div>
