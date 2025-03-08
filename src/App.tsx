@@ -17,7 +17,7 @@ function App() {
         bg="gold"
         display={{ base: "none", lg: "block" }}
       ></GridItem>
-      <GridItem area="main" bg="dodgerblue">
+      <GridItem area="main" bg="">
         <GridMovie />
       </GridItem>
     </Grid>

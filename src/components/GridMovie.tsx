@@ -1,9 +1,11 @@
-import useMovie from "@/hooks/useMovies";
+import useFetchData from "@/hooks/useFetchData";
+// import useMovie from "@/hooks/useMovies";
 import { Movie } from "@/types";
 import { Image, Link } from "@chakra-ui/react";
 
 const GridMovie = () => {
-  const { data: movies, isLoading, error } = useMovie<Movie>();
+  // const { data: movies, isLoading, error } = useMovie<Movie>();
+  const { data: movies, isLoading, error } = useFetchData("/new-horror");
 
   if (isLoading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
