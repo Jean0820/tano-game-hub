@@ -6,7 +6,7 @@ import CriticScore from "./CriticScore";
 
 const GameCard = (game: Game) => {
   return (
-    <Card.Root borderRadius={10} overflow="hidden">
+    <Card.Root borderRadius={10} overflow="hidden" width={"100%"}>
       <Image src={game.thumbnail} />
       <CardBody>
         <Heading fontSize={{ base: "2xl", xl: "xl" }}>{game.title}</Heading>
