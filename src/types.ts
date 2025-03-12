@@ -4,7 +4,7 @@ export type Director = {
 export type Genre = {
     name: string;
 }
-export interface Game {
+export type Game ={
   id: number;
   title: string;
   thumbnail: string;

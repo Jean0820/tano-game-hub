@@ -1,15 +1,19 @@
 import { Game } from "@/types";
-import { Card, CardBody } from "@chakra-ui/react";
+import { Card, CardBody, HStack } from "@chakra-ui/react";
 import { Heading, Image } from "@chakra-ui/react";
+import PlatformIconList from "./PlatformIconList";
+import CriticScore from "./CriticScore";
 
 const GameCard = (game: Game) => {
   return (
     <Card.Root borderRadius={10} overflow="hidden">
       <Image src={game.thumbnail} />
       <CardBody>
-        <Heading fontSize={{base:"2xl", xl:"xl"}}>
-          {game.title}
-        </Heading>
+        <Heading fontSize={{ base: "2xl", xl: "xl" }}>{game.title}</Heading>
+        <HStack justify="space-between">
+          <PlatformIconList {...game} />
+          <CriticScore score={game.id} />
+        </HStack>
       </CardBody>
     </Card.Root>
   );
