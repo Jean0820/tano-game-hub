@@ -4,13 +4,16 @@ export type Director = {
 export type Genre = {
     name: string;
 }
-export interface Movie {
-  directors: Director[];
-  image: string;
-  imdbRating: string;
-  link: string;
-  releasePeriod: string;
-  starsList: Genre[];
-  timeline: string;
+export interface Game {
+  id: number;
   title: string;
+  thumbnail: string;
+  short_description: string;
+  game_url: string;
+  genre: string;
+  platform: string;
+  publisher: string;
+  developer: string;
+  release_date: string;
+  freetogame_profile_url: string;
 }

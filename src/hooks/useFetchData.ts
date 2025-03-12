@@ -5,7 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 const useFetchData = (endpoint : string) => {
   const fetchData = () => {
     return apiClient.get(endpoint).then((res) => {      
-      return res.data.list;
+      return res.data;
     });
   };
   const { data, isLoading, error } = useQuery({

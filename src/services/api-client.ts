@@ -1,13 +1,9 @@
 import axios from "axios";
 
 export default axios.create({
-  baseURL: "https://moviesverse1.p.rapidapi.com",
-  params: {
-    key: "c5b355e2b3msh90d156782890c26p1995e0jsnbdd6911bc035",
-    host: "moviesverse1.p.rapidapi.com",
-  },
+  baseURL: "https://free-to-play-games-database.p.rapidapi.com/api",
   headers: {
-    "X-RapidAPI-Key": "c5b355e2b3msh90d156782890c26p1995e0jsnbdd6911bc035",
-    "X-RapidAPI-Host": "moviesverse1.p.rapidapi.com",
-  }
+    "x-rapidapi-host": "free-to-play-games-database.p.rapidapi.com",
+    "x-rapidapi-key": "c5b355e2b3msh90d156782890c26p1995e0jsnbdd6911bc035",
+  },
 });

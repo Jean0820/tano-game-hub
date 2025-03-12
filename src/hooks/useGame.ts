@@ -2,7 +2,7 @@ import apiClient from "@/services/api-client";
 import { CanceledError } from "axios";
 import { useEffect, useState } from "react";
 
-const useMovie = <T>(deps?: T) => {
+const useGame = <T>(deps?: T) => {
   const [data, setData] = useState<T[]>();
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<Error | null>(null);
@@ -10,7 +10,7 @@ const useMovie = <T>(deps?: T) => {
   useEffect(() => {
     const controller = new AbortController();
     apiClient
-      .get("/new-horror", { signal: controller.signal })
+      .get("/games", { signal: controller.signal })
       .then((res) => {
         setData(res.data.list);
         setIsLoading(false);
@@ -27,4 +27,4 @@ const useMovie = <T>(deps?: T) => {
   return { data, isLoading, error };
 };
 
-export default useMovie;
+export default useGame;
