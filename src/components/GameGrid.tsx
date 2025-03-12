@@ -5,8 +5,14 @@ import GameCardSkeleton from "./GameCardSkeleton";
 import { GetAllGames } from "@/services/game-service";
 import { skeletons } from "@/constants/game-constants";
 
-const GameGrid = () => {
+type Props = {
+  selectedGenre: string | null;
+};
+const GameGrid = ({ selectedGenre }: Props) => {
   const { data, isLoading, error } = GetAllGames();
+  const filteredData = selectedGenre
+    ? data?.filter((game: Game) => game.genre === selectedGenre)
+    : data;
   if (error) return <p>Error: {error.message}</p>;
   return (
     <SimpleGrid
@@ -16,7 +22,7 @@ const GameGrid = () => {
     >
       {isLoading &&
         skeletons.map((skeleton) => <GameCardSkeleton key={skeleton} />)}
-      {data?.map((game: Game) => (
+      {filteredData?.map((game: Game) => (
         <GameCard key={game.id} {...game} />
       ))}
     </SimpleGrid>

@@ -4,6 +4,6 @@ export default axios.create({
   baseURL: "https://free-to-play-games-database.p.rapidapi.com/api",
   headers: {
     "x-rapidapi-host": "free-to-play-games-database.p.rapidapi.com",
-    "x-rapidapi-key": "c5b355e2b3msh90d156782890c26p1995e0jsnbdd6911bc035",
+    "x-rapidapi-key": "c4f89341e0msh087f8e574ff66a1p1631cejsnc21af1484f43",
   },
 });
