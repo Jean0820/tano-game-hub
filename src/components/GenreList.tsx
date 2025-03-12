@@ -5,9 +5,10 @@ import { CircularProgress } from "@mui/material";
 
 type Props = {
   onSelectGenre: (genre: string) => void;
-}
+  selectedGenre: string | null;
+};
 
-const GenreList = ({ onSelectGenre }: Props) => {
+const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
   const { data, isLoading, error } = GetAllGames();
   const uniqueGenres: string[] = Array.from(
     new Set(data?.map((game: Game) => game.genre.trim()))
@@ -29,7 +30,12 @@ const GenreList = ({ onSelectGenre }: Props) => {
               src={"https://www.freetogame.com/g/14/thumbnail.jpg"}
             />
             <Text>
-              <Link onClick={() => onSelectGenre(genre)}>{genre}</Link>
+              <Link
+                fontWeight={ selectedGenre === genre ? "bold": "normal"}
+                onClick={() => onSelectGenre(genre)}
+              >
+                {genre}
+              </Link>
             </Text>
           </HStack>
         </ListItem>
