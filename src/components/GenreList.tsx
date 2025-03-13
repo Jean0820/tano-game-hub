@@ -1,6 +1,6 @@
 import { GetAllGames } from "@/services/game-service";
 import { Game } from "@/types";
-import { HStack, Image, Link, List, ListItem, Text } from "@chakra-ui/react";
+import { Heading, HStack, Image, Link, List, ListItem, Text } from "@chakra-ui/react";
 import { CircularProgress } from "@mui/material";
 
 type Props = {
@@ -18,6 +18,7 @@ const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
 
   return (
     <List.Root>
+      <Heading fontSize="2xl" paddingY={4}>Genres</Heading>
       {uniqueGenres.map((genre: string) => (
         <ListItem key={genre} paddingY="5px" listStyle="none">
           <HStack>

@@ -26,17 +26,17 @@ const GameGrid = ({ selectedGenre, selectedPlatform, searchTerm }: Props) => {
 
   if (error) return <p>Error: {error.message}</p>;
   return (
-    <SimpleGrid
-      columns={{ base: 1, md: 2, lg: 3, xl: 5 }}
-      gap={5}
-      paddingY={"10px"}
-    >
-      {isLoading &&
-        skeletons.map((skeleton) => <GameCardSkeleton key={skeleton} />)}
-      {filteredGames?.map((game: Game) => (
-        <GameCard key={game.id} {...game} />
-      ))}
-    </SimpleGrid>
+      <SimpleGrid
+        columns={{ base: 1, md: 2, lg: 3, xl: 5 }}
+        gap={5}
+        paddingY={"10px"}
+      >
+        {isLoading &&
+          skeletons.map((skeleton) => <GameCardSkeleton key={skeleton} />)}
+        {filteredGames?.map((game: Game) => (
+          <GameCard key={game.id} {...game} />
+        ))}
+      </SimpleGrid>
   );
 };
 

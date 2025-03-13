@@ -9,11 +9,11 @@ const GameCard = (game: Game) => {
     <Card.Root borderRadius={10} overflow="hidden" width={"100%"}>
       <Image src={game.thumbnail} />
       <CardBody>
-        <Heading fontSize={{ base: "2xl", xl: "xl" }}>{game.title}</Heading>
         <HStack justify="space-between">
           <PlatformIconList {...game} />
           <CriticScore score={game.id} />
         </HStack>
+        <Heading fontSize={{ base: "2xl", xl: "xl" }}>{game.title}</Heading>
       </CardBody>
     </Card.Root>
   );

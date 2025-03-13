@@ -23,7 +23,7 @@ const SortSelector = ({ onSelectPlatform, selectedPlatform }: Props) => {
   return (
     <MenuRoot>
       <MenuTrigger asChild>
-        <Button variant="subtle" size="lg">
+        <Button variant="subtle" size="xl">
           {selectedPlatform ? "Order By: " + selectedPlatform : "Order By: Release"}{" "}
           <LuChevronDown />
         </Button>
