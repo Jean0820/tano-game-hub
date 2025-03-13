@@ -4,7 +4,7 @@ type heading = {
 };
 const GameHeading = ({ title }: heading) => {
   return (
-    <Heading fontSize={60} paddingTop={16} paddingBottom={10}>
+    <Heading fontSize={60} paddingTop={14} paddingBottom={8}>
       {title + " Games"}
     </Heading>
   );

@@ -43,7 +43,7 @@ function App() {
               ? `${selectedGenre}`
               : selectedPlatform
               ? selectedPlatform
-              : "All"
+              : ""
           }
         />
         <HStack gap={5} paddingY={5}>
