@@ -18,9 +18,6 @@ const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
 
   return (
     <List.Root>
-      <Text>
-        <Link onClick={() => onSelectGenre("")}>All</Link>
-      </Text>
       {uniqueGenres.map((genre: string) => (
         <ListItem key={genre} paddingY="5px" listStyle="none">
           <HStack>
