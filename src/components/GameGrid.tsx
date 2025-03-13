@@ -8,12 +8,18 @@ import { skeletons } from "@/constants/game-constants";
 type Props = {
   selectedGenre: string | null;
   selectedPlatform: string | null;
+  searchTerm: string | null;
 };
-const GameGrid = ({ selectedGenre, selectedPlatform }: Props) => {
+const GameGrid = ({ selectedGenre, selectedPlatform, searchTerm }: Props) => {
   const { data, isLoading, error } = GetAllGames();
 
   const filteredGames = data
-    ?.filter((game: Game) => !selectedGenre || game.genre === selectedGenre)
+    ?.filter(
+      (game: Game) =>
+        !searchTerm ||
+        game.title.toLowerCase().includes(searchTerm.toLowerCase())
+    )
+    .filter((game: Game) => !selectedGenre || game.genre === selectedGenre)
     .filter(
       (game: Game) => !selectedPlatform || game.platform === selectedPlatform
     );

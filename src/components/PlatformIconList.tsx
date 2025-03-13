@@ -12,7 +12,7 @@ const PlatformIconList = (game: Game) => {
   return (
     <HStack marginY={1}>
       {game.platform.split(",").map((platform) => (
-        <Icon as={iconMap[platform.trim()]} color="gray.500" />
+        <Icon as={iconMap[platform.trim()]} color="gray.500" key={platform}/>
       ))}
     </HStack>
   );

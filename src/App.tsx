@@ -8,6 +8,7 @@ import SortSelector from "./components/SortSelector";
 function App() {
   const [selectedGenre, setSelectedGenre] = useState<string | null>(null);
   const [selectedPlatform, setSelectedPlatform] = useState<string | null>(null);
+  const [searchTerm, setSearchTerm] = useState<string | null>(null);
   return (
     <Grid
       templateAreas={{
@@ -20,7 +21,7 @@ function App() {
       }}
     >
       <GridItem area="nav">
-        <NavBar />
+        <NavBar onSearch={(searchTerm) => setSearchTerm(searchTerm)} />
       </GridItem>
       <GridItem
         area="aside"
@@ -46,6 +47,7 @@ function App() {
         <GameGrid
           selectedPlatform={selectedPlatform}
           selectedGenre={selectedGenre}
+          searchTerm={searchTerm}
         />
       </GridItem>
     </Grid>
