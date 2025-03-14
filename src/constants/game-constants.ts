@@ -99,3 +99,10 @@ export const sorts = [
   "developer",
   "release_date",
 ];
+
+export const platforms = [
+  { id: 1, name: "PC (Windows)", slug: "pc" },
+  { id: 2, name: "Web (Browser)", slug: "browser" },
+  { id: 3, name: "PC (Windows), Web (Browser)", slug: "pc&browser" },
+];
+

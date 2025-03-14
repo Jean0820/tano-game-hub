@@ -4,8 +4,8 @@ import {
   MenuRoot,
   MenuTrigger,
 } from "@/components/ui/menu";
-import { GetAllGames } from "@/services/game-service";
-import { Game } from "@/types";
+import { platforms } from "@/constants/game-constants";
+import { Platform } from "@/types";
 import { Button } from "@chakra-ui/react";
 import { LuChevronDown } from "react-icons/lu";
 
@@ -14,12 +14,6 @@ type Props = {
   selectedPlatform: string | null;
 };
 const PlatformSelector = ({ onSelectPlatform, selectedPlatform }: Props) => {
-  const { data, isLoading, error } = GetAllGames();
-  const platforms: string[] = Array.from(
-    new Set(data?.map((game: Game) => game.platform.trim()))
-  );
-  if (isLoading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error.message}</p>;
   return (
     <MenuRoot>
       <MenuTrigger asChild>
@@ -28,14 +22,14 @@ const PlatformSelector = ({ onSelectPlatform, selectedPlatform }: Props) => {
         </Button>
       </MenuTrigger>
       <MenuContent>
-        {platforms?.map((platform: string) => (
+        {platforms?.map((platform: Platform) => (
           <MenuItem
-            key={platform}
-            value={platform}
-            onClick={() => onSelectPlatform(platform)}
+            key={platform.id}
+            value={platform.name}
+            onClick={() => onSelectPlatform(platform.name)}
             fontSize="lg"
           >
-            {platform}
+            {platform.name}
           </MenuItem>
         ))}
       </MenuContent>

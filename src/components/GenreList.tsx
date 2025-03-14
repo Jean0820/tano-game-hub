@@ -1,5 +1,4 @@
 import { genres } from "@/constants/game-constants";
-import { Genre } from "@/types";
 import { Heading, HStack, Image, Link, List, ListItem, Text } from "@chakra-ui/react";
 
 type Props = {
@@ -15,7 +14,7 @@ const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
       <Heading fontSize="2xl" paddingY={4}>
         Genres
       </Heading>
-      {sortedGenres.sort().map((genre: Genre) => (
+      {sortedGenres?.map((genre) => (
         <ListItem key={genre.id} paddingY={2} listStyle="none">
           <HStack>
             <Image boxSize={"32px"} borderRadius={8} src={genre.imageUrl} />

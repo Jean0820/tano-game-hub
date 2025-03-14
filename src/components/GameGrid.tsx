@@ -1,30 +1,17 @@
-import { Game } from "@/types";
+import { Game, GameQuery } from "@/types";
 import GameCard from "./GameCard";
 import { SimpleGrid } from "@chakra-ui/react";
 import GameCardSkeleton from "./GameCardSkeleton";
-import { GetAllGames } from "@/services/game-service";
 import { skeletons } from "@/constants/game-constants";
+import useGames from "@/hooks/useGames";
+const GameGrid = (gameQuery: GameQuery) => {
+  const { data, isLoading, error } = useGames(gameQuery);
 
-type Props = {
-  selectedGenre: string | null;
-  selectedPlatform: string | null;
-  searchTerm: string | null;
-  sortTerm: string | null;
-};
-
-const GameGrid = ({ selectedGenre, selectedPlatform, searchTerm, sortTerm }: Props) => {
-  const { data, isLoading, error } = GetAllGames();
-
-  const filteredGames = data
-    ?.filter(
-      (game: Game) =>
-        !searchTerm ||
-        game.title.toLowerCase().includes(searchTerm.toLowerCase())
-    )
-    .filter((game: Game) => !selectedGenre || game.genre === selectedGenre)
-    .filter(
-      (game: Game) => !selectedPlatform || game.platform === selectedPlatform
-    );
+  const filteredGames = data?.filter(
+    (game: Game) =>
+      !gameQuery.searchTerm ||
+      game.title.toLowerCase().includes(gameQuery.searchTerm.toLowerCase())
+  );
 
   if (error) return <p>Error: {error.message}</p>;
   return (
@@ -37,9 +24,9 @@ const GameGrid = ({ selectedGenre, selectedPlatform, searchTerm, sortTerm }: Pro
         skeletons.map((skeleton) => <GameCardSkeleton key={skeleton} />)}
       {filteredGames
         ?.sort((a: Game, b: Game) => {
-          if (!sortTerm) return 0; // No sorting if no sortTerm is provided
+          if (!gameQuery.sortTerm) return 0; // No sorting if no sortTerm is provided
 
-          switch (sortTerm) {
+          switch (gameQuery.sortTerm) {
             case "title":
               return a.title.localeCompare(b.title);
             case "release_date":

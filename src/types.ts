@@ -16,7 +16,20 @@ export type Game = {
 };
 
 export type Genre = {
-  id: number;
+  id: string;
   name: string;
   imageUrl: string;
 };
+
+export type GameQuery = {
+  selectedGenre: string | null;
+  selectedPlatform: string | null;
+  searchTerm: string | null;
+  sortTerm: string | null;
+};
+
+export type Platform ={
+  id: number;
+  slug: string;
+  name: string;
+}
