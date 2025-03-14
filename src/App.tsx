@@ -47,7 +47,7 @@ function App() {
               : ""
           }
         />
-        <HStack gap={5} paddingY={5}>
+        <HStack gap={5} paddingY={5} alignItems={"start"} flexDirection={{base:"column", md:"row"}}>
           <PlatformSelector
             selectedPlatform={selectedPlatform}
             onSelectPlatform={(platform) => setSelectedPlatform(platform)}
