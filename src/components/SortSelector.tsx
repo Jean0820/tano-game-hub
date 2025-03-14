@@ -17,10 +17,9 @@ const SortSelector = ({ onSelectSortTerm, sortTerm }: Props) => {
   return (
     <MenuRoot>
       <MenuTrigger asChild>
-        <Button variant="subtle" fontSize="lg"  size="xl">
-          {sortTerm
-            ? "Order By: " + formatSortTerm(sortTerm)
-            : "Order By: Release"}{" "}
+        <Button variant="subtle" fontSize="lg" size="xl">
+          Order By:{" "}
+          {sortTerm ? <strong>{formatSortTerm(sortTerm)}</strong> : "Release"}{" "}
           <LuChevronDown />
         </Button>
       </MenuTrigger>
