@@ -8,22 +8,20 @@ type Props = {
 };
 
 const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
+  const sortedGenres = genres.sort((a, b) => a.name.localeCompare(b.name));
+
   return (
     <List.Root>
       <Heading fontSize="2xl" paddingY={4}>
         Genres
       </Heading>
-      {genres.sort().map((genre: Genre) => (
+      {sortedGenres.sort().map((genre: Genre) => (
         <ListItem key={genre.id} paddingY={2} listStyle="none">
           <HStack>
-            <Image
-              boxSize={"32px"}
-              borderRadius={8}
-              src={genre.imageUrl}
-            />
+            <Image boxSize={"32px"} borderRadius={8} src={genre.imageUrl} />
             <Text>
               <Link
-              fontSize="lg"
+                fontSize="lg"
                 fontWeight={selectedGenre === genre.name ? "bold" : "normal"}
                 onClick={() => onSelectGenre(genre.name)}
               >

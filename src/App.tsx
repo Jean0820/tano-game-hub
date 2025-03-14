@@ -10,6 +10,7 @@ function App() {
   const [selectedGenre, setSelectedGenre] = useState<string | null>(null);
   const [selectedPlatform, setSelectedPlatform] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState<string | null>(null);
+  const [sortTerm, setSortTerm] = useState<string | null>(null);
   return (
     <Grid
       templateAreas={{
@@ -52,11 +53,12 @@ function App() {
             onSelectPlatform={(platform) => setSelectedPlatform(platform)}
           />
           <SortSelector
-            selectedPlatform={selectedPlatform}
-            onSelectPlatform={(platform) => setSelectedPlatform(platform)}
+            sortTerm={sortTerm}
+            onSelectSortTerm={(platform) => setSortTerm(platform)}
           />
         </HStack>
         <GameGrid
+          sortTerm={sortTerm}
           selectedPlatform={selectedPlatform}
           selectedGenre={selectedGenre}
           searchTerm={searchTerm}

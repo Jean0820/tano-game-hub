@@ -90,3 +90,12 @@ export const genres = [
     imageUrl: "https://www.freetogame.com/g/11/thumbnail.jpg",
   },
 ];
+
+export const sorts = [
+  "title",
+  "genre",
+  "platform",
+  "publisher",
+  "developer",
+  "release_date",
+];

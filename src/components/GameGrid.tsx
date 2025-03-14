@@ -9,8 +9,10 @@ type Props = {
   selectedGenre: string | null;
   selectedPlatform: string | null;
   searchTerm: string | null;
+  sortTerm: string | null;
 };
-const GameGrid = ({ selectedGenre, selectedPlatform, searchTerm }: Props) => {
+
+const GameGrid = ({ selectedGenre, selectedPlatform, searchTerm, sortTerm }: Props) => {
   const { data, isLoading, error } = GetAllGames();
 
   const filteredGames = data
@@ -26,17 +28,41 @@ const GameGrid = ({ selectedGenre, selectedPlatform, searchTerm }: Props) => {
 
   if (error) return <p>Error: {error.message}</p>;
   return (
-      <SimpleGrid
-        columns={{ base: 1, md: 2, lg: 3, xl: 5 }}
-        gap={5}
-        paddingY={"10px"}
-      >
-        {isLoading &&
-          skeletons.map((skeleton) => <GameCardSkeleton key={skeleton} />)}
-        {filteredGames?.map((game: Game) => (
+    <SimpleGrid
+      columns={{ base: 1, md: 2, lg: 3, xl: 5 }}
+      gap={5}
+      paddingY={"10px"}
+    >
+      {isLoading &&
+        skeletons.map((skeleton) => <GameCardSkeleton key={skeleton} />)}
+      {filteredGames
+        ?.sort((a: Game, b: Game) => {
+          if (!sortTerm) return 0; // No sorting if no sortTerm is provided
+
+          switch (sortTerm) {
+            case "title":
+              return a.title.localeCompare(b.title);
+            case "release_date":
+              return (
+                new Date(b.release_date).getTime() -
+                new Date(a.release_date).getTime()
+              ); // Latest first
+            case "platform":
+              return a.platform.localeCompare(b.platform);
+            case "genre":
+              return a.genre.localeCompare(b.genre);
+            case "developer":
+              return a.developer.localeCompare(b.developer);
+            case "publisher":
+              return a.publisher.localeCompare(b.publisher);
+            default:
+              return 0;
+          }
+        })
+        .map((game: Game) => (
           <GameCard key={game.id} {...game} />
         ))}
-      </SimpleGrid>
+    </SimpleGrid>
   );
 };
 

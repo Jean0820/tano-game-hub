@@ -23,8 +23,8 @@ const PlatformSelector = ({ onSelectPlatform, selectedPlatform }: Props) => {
   return (
     <MenuRoot>
       <MenuTrigger asChild>
-        <Button variant="subtle" size="xl">
-          {selectedPlatform ? selectedPlatform : "Platforms"} <LuChevronDown/>
+        <Button fontSize="lg"  variant="subtle" size="xl">
+          {selectedPlatform ? selectedPlatform : "Platforms"} <LuChevronDown />
         </Button>
       </MenuTrigger>
       <MenuContent>
@@ -33,6 +33,7 @@ const PlatformSelector = ({ onSelectPlatform, selectedPlatform }: Props) => {
             key={platform}
             value={platform}
             onClick={() => onSelectPlatform(platform)}
+            fontSize="lg"
           >
             {platform}
           </MenuItem>
