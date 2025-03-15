@@ -6,10 +6,11 @@ import { useState } from "react";
 import PlatformSelector from "./components/PlatformSelector";
 import SortSelector from "./components/SortSelector";
 import GameHeading from "./components/GameHeading";
+import { Platform } from "./types";
 
 function App() {
   const [selectedGenre, setSelectedGenre] = useState<string | null>(null);
-  const [selectedPlatform, setSelectedPlatform] = useState<string | null>(null);
+  const [selectedPlatform, setSelectedPlatform] = useState<Platform | null>(null);
   const [searchTerm, setSearchTerm] = useState<string | null>(null);
   const [sortTerm, setSortTerm] = useState<string | null>(null);
   return (
@@ -43,14 +44,14 @@ function App() {
               ? `${selectedPlatform} ${selectedGenre}`
               : selectedGenre
               ? `${selectedGenre}`
-              : selectedPlatform
-              ? selectedPlatform
+              : selectedPlatform?.name
+              ? selectedPlatform?.name
               : ""
           }
         />
         <HStack gap={5} paddingY={5} alignItems={"start"} flexDirection={{base:"column", md:"row"}}>
           <PlatformSelector
-            selectedPlatform={selectedPlatform}
+            selectedPlatform={selectedPlatform?.name}
             onSelectPlatform={(platform) => setSelectedPlatform(platform)}
           />
           <SortSelector
@@ -60,7 +61,7 @@ function App() {
         </HStack>
         <GameGrid
           sortTerm={sortTerm}
-          selectedPlatform={selectedPlatform}
+          selectedPlatform={selectedPlatform?.slug}
           selectedGenre={selectedGenre}
           searchTerm={searchTerm}
         />

@@ -10,8 +10,8 @@ import { Button } from "@chakra-ui/react";
 import { LuChevronDown } from "react-icons/lu";
 
 type Props = {
-  onSelectPlatform: (platform: string) => void;
-  selectedPlatform: string | null;
+  onSelectPlatform: (platform: Platform) => void;
+  selectedPlatform: string | undefined;
 };
 const PlatformSelector = ({ onSelectPlatform, selectedPlatform }: Props) => {
   return (
@@ -26,7 +26,7 @@ const PlatformSelector = ({ onSelectPlatform, selectedPlatform }: Props) => {
           <MenuItem
             key={platform.id}
             value={platform.name}
-            onClick={() => onSelectPlatform(platform.name)}
+            onClick={() => onSelectPlatform(platform)}
             fontSize="lg"
           >
             {platform.name}

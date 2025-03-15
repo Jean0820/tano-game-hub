@@ -23,7 +23,7 @@ export type Genre = {
 
 export type GameQuery = {
   selectedGenre: string | null;
-  selectedPlatform: string | null;
+  selectedPlatform: string | undefined;
   searchTerm: string | null;
   sortTerm: string | null;
 };
