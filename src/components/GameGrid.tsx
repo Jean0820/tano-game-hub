@@ -24,7 +24,7 @@ const GameGrid = (gameQuery: GameQuery) => {
         skeletons.map((skeleton) => <GameCardSkeleton key={skeleton} />)}
       {filteredGames
         ?.sort((a: Game, b: Game) => {
-          if (!gameQuery.sortTerm) return 0; // No sorting if no sortTerm is provided
+          if (!gameQuery.sortTerm) return 0;
 
           switch (gameQuery.sortTerm) {
             case "title":
@@ -33,7 +33,7 @@ const GameGrid = (gameQuery: GameQuery) => {
               return (
                 new Date(b.release_date).getTime() -
                 new Date(a.release_date).getTime()
-              ); // Latest first
+              ); 
             case "platform":
               return a.platform.localeCompare(b.platform);
             case "genre":

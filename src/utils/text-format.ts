@@ -4,3 +4,4 @@ export const formatSortTerm = (sortTerm: string) => {
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()) // Capitalize each word
     .join(" "); // Join words with a space
 };
+
