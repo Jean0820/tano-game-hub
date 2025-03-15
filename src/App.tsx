@@ -40,8 +40,8 @@ function App() {
       <GridItem area="main" paddingX={"10px"}>
         <GameHeading
           title={
-            selectedGenre && selectedPlatform
-              ? `${selectedPlatform} ${selectedGenre}`
+            selectedGenre && selectedPlatform?.name
+              ? `${selectedPlatform?.name} ${selectedGenre}`
               : selectedGenre
               ? `${selectedGenre}`
               : selectedPlatform?.name
