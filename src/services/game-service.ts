@@ -1,6 +1,6 @@
 import useFetchData from "@/hooks/useFetchData";
 
 export const GetAllGames = () => {
-  const { data, isLoading, error } = useFetchData("/games?platform=browser");
+  const { data, isLoading, error } = useFetchData();
   return { data, isLoading, error };
 };

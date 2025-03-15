@@ -1,15 +1,11 @@
-import apiClient from "@/services/api-client";
+import ApiClient from "@/services/api-client";
 import { useQuery } from "@tanstack/react-query";
 
+const apiClient = new ApiClient("/games")
 const useGenres = () => {
-  const fetchData = () => {
-    return apiClient.get("/games").then((res) => {
-      return res.data;
-    });
-  };
   const { data, isLoading, error } = useQuery({
     queryKey: ["data"],
-    queryFn: fetchData,
+    queryFn: () => apiClient.getAll,
   });
   return { data, isLoading, error };
 };

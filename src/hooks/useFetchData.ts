@@ -1,12 +1,9 @@
-import apiClient from "@/services/api-client";
+import ApiClient from "@/services/api-client";
 import { useQuery } from "@tanstack/react-query";
-// import axios from "axios";
-
-const useFetchData = (endpoint : string) => {
+const apiClient = new ApiClient("/games");
+const useFetchData = () => {
   const fetchData = () => {
-    return apiClient.get(endpoint).then((res) => {      
-      return res.data;
-    });
+    return apiClient.getAll
   }; 
   const { data, isLoading, error } = useQuery({
     queryKey: ["data"],
